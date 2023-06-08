@@ -1,4 +1,4 @@
 name: Uranus-Spigot
 version: '${project.version}'
 main: me.will0mane.libs.uranusspigot.UranusSpigot
-api-version: 1.19
+api-version: 1.17

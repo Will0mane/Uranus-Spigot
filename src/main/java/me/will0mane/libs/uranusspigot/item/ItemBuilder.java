@@ -1,5 +1,6 @@
 package me.will0mane.libs.uranusspigot.item;
 
+import me.will0mane.libs.uranusspigot.item.blueprint.BlueprintCItemHeadData;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -23,6 +24,15 @@ public class ItemBuilder {
 
     public ItemStack build(){
         return original;
+    }
+
+    public ItemBuilder setHead(String head) {
+        if (original.getType() != Material.PLAYER_HEAD) {
+            return this;
+        }
+
+        new BlueprintCItemHeadData(this, head).execPin();
+        return this;
     }
 
     public ItemBuilder rename(String name){
@@ -66,4 +76,7 @@ public class ItemBuilder {
         return original.getItemMeta();
     }
 
+    public ItemStack getOriginal() {
+        return original;
+    }
 }
