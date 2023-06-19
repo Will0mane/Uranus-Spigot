@@ -31,6 +31,11 @@ public class Worker<T extends WorkerType> {
         return data.hashCode();
     }
 
+    public void wipe() {
+        taskMap.values().forEach(WorkerTask::cancel);
+        taskMap.clear();
+    }
+
     public WorkerTask later(Consumer<Worker<?>> consumer, long delay){
         int taskID = getRandomID();
         WorkerTask task = new ConsumerTask(this, consumer, taskID);
